@@ -7,8 +7,8 @@ const connection = mysql.createPool({
   // user: process.env.DB_USER,
   // password: '123456',
   // database: process.env.MYSQL_DATABASE || 'Ebytr',
-  host: 'localhost',
-  user: 'root',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
   password: '123456',
   database: 'Ebytr',
 });
