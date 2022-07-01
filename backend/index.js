@@ -1,5 +1,5 @@
 // const app = require('./app');
-// require('dotenv').config();
+require('dotenv').config();
 
 // app.listen(process.env.PORT, () => {
 //   console.log(`Escutando na porta ${process.env.PORT}`);
@@ -25,8 +25,9 @@ app.put('/tasks/:id', tasksController.updateTask);
 
 app.delete('/tasks/:id', tasksController.deleteTask);
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
+  console.log(process.env.PORT);
   console.log(`Escutando na porta ${PORT}`);
 });
