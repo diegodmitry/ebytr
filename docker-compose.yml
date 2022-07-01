@@ -1,0 +1,41 @@
+version: '3.3'
+
+services: # cada servico é um container
+  backend:
+    build: ./backend
+    container_name: 'app_backend'
+    ports:
+      - 3001:3001
+    volumes:
+      - ./backend:/app/backend
+    environment:
+      - PORT=3001
+      - DB_USER=root
+      - DB_PASS=123456
+      - DB_HOST=db
+      - DB_NAME=Tasks
+      - DB_PORT=3306
+    depends_on:
+      - db
+    command: npm start
+
+    restart: always
+
+  frontend:
+    build: ./frontend
+    container_name: 'app_frontend'
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+
+    command: npm start
+
+  db:
+    image: mysql:8.0.21
+    container_name: "mysql_db"
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    restart: 'always'
