@@ -1,28 +1,38 @@
 // import axios from 'axios';
-// import { useEffect, useState } from 'react';
-import './App.css';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
+import TasksProvider from './context/Context';
+// import './App.css';
+// import logo from './logo.svg';
+
+
 
 function App() {
-  // const [objects, setObjects] = useState([]);
+  const [datas, setDatas] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get('http://localhost:3001/objects').then(response => { setObjects(response.data) });
-  // }, []);
+  // const URL = 'http://localhost:3001/tasks';
+  // const fetchTasksAPI = async () => {
+  //   const response = await fetch(URL);
+  //   const data = await response.json();
+  //   setDatas(data);
+  //   // return data;
+  // };
+
+  useEffect(() => {
+    // axios.get('http://localhost:3001/objects')
+    // .then(response => { setObjects(response.data) });
+    // fetchTasksAPI();
+    // console.log("🚀 ~ file: App.js ~ line 20 ~ useEffect ~ tasks", tasks)
+
+  }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        {/* {
-          objects.map(o => (
-            <span>{o.object}</span>
-          ))} */}
-      </header>
-    </div>
+    <TasksProvider>
+      <div className="todo-app">
+        <TodoList />
+      </div>
+    </TasksProvider>
   );
 }
 
