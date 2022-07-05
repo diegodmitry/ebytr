@@ -1,16 +1,16 @@
-import React, { useState, useContext, useEffect } from 'react';
-// import { GlobalContext } from '../context/Context';
-// import fetchTasksAPI from '../services/fetchAPI';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 function TodoForm() {
   const [input, setInput] = useState();
   const [currentStatus, setCurrentStatus] = useState('pendente');
 
+  // editar nome da tarefa
   const changeTask = (newTask) => {
     setInput(newTask)
   };
 
+  // mudar status
   const changeStatus = (newStatus) => {
     setCurrentStatus(newStatus)
   };

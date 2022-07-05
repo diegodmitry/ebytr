@@ -5,7 +5,6 @@ export const GlobalContext = createContext();
 function TasksProvider({ children }) {
   const [originalDatas, setOriginalDatas] = useState([]);
   const [datas, setDatas] = useState([]);
-  console.log("🚀 ~ file: Context.js ~ line 7 ~ TasksProvider ~ datas", datas);
 
   const editedDatas = async (tasks) => {
     const newDatas = tasks.map((data) => (
@@ -23,7 +22,7 @@ function TasksProvider({ children }) {
 
   useEffect(() => {
     fetchTasks();
-  }, []);
+  }, [datas]);
 
   const contextValue = {
     originalDatas,
