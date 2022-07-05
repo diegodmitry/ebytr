@@ -27,6 +27,13 @@ Tudo isso, applicado em uma esstrutura de task list.
 3. Execute
 ` docker-compose up --build -d  `
 
+4. No container que é o banco de dados, acesse o container(Workbench):
+  user: root,
+  pass: '123456'
+  Execute o arquivo ` Ebytr.sql `, está dentro do diretório backend.
+
+Obs: as informações acimas são uma má prática, o objetivo é apenas para facilitar a execução da aplicação por parte dos interessados.
+
 # Requisitos
 - [x] Visualizar lista de tarefas;
   - [ ] a. Ordenável por ordem alfabética, data de criação ou por status
