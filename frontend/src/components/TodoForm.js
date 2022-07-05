@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-const axios = require('axios').default;
+import React, { useState, useContext, useEffect } from 'react';
+// import { GlobalContext } from '../context/Context';
+// import fetchTasksAPI from '../services/fetchAPI';
+import axios from 'axios';
 
-function TodoForm(props) {
+function TodoForm() {
   const [input, setInput] = useState();
   const [currentStatus, setCurrentStatus] = useState('pendente');
 
@@ -16,42 +18,14 @@ function TodoForm(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    //send datas to MySQL
-    // console.log(props);
-    // console.log(event);
-    // props.onSubmit({
-    //   text: input,
-    // });
-
-    // const dataToServer = {
-    //   nameTask: input,
-    //   statusTask: currentStatus,
-    // }
-
-    // console.log('Enviar no formato JSON: ', dataToServer);
-
-    axios.post('http://localhost:3001/tasks', {
+  const request = await axios.get("http://localhost:3001/tasks");
+   const postRequest = axios.post('http://localhost:3001/tasks', {
       name: input,
       status: currentStatus,
     })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-
-  //   const requestOptions = {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({ nameTask: 'Fetch POST Request Example',  statusTask: currentStatus})
-  // };
-  // const test = await fetch('http://localhost:3001/tasks', requestOptions)
-  // console.log("🚀 ~ file: TodoForm.js ~ line 50 ~ handleSubmit ~ test", test)
-  //     .then(response => response.json())
-  //     .then(data => console.log(data) );
-
-    // setInput(''); // clean input field
+    console.log(request);
+    console.log(postRequest);
+    setInput(''); // clean input field
   };
 
   return (
