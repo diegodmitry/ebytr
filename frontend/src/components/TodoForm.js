@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+const axios = require('axios').default;
 
 function TodoForm(props) {
   const [input, setInput] = useState();
@@ -12,7 +13,7 @@ function TodoForm(props) {
     setCurrentStatus(newStatus)
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     //send datas to MySQL
@@ -22,37 +23,35 @@ function TodoForm(props) {
     //   text: input,
     // });
 
-    const dataToServer = {
-      nameTask: input,
-      statusTask: currentStatus,
-    }
+    // const dataToServer = {
+    //   nameTask: input,
+    //   statusTask: currentStatus,
+    // }
 
-    console.log('Enviar no formato JSON: ', dataToServer);
-    // console.log(currentStatus);
+    // console.log('Enviar no formato JSON: ', dataToServer);
 
-    // fetch('http://localhost:3001/tasks', {
-    //     method: 'POST',
-    //     // We convert the React state to JSON and send it as the POST body
-    //     body: JSON.stringify(dataToServer)
-    //   }).then(function(response) {
-    //     console.log(response)
-    //     return response.json();
-    //   });
-    (async () => {
-      const rawResponse = await fetch('http://localhost:3001/tasks', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ nameTask: input, statusTask: currentStatus })
-      });
-      const content = await rawResponse.json();
-    
-      console.log(content);
-    })();
+    axios.post('http://localhost:3001/tasks', {
+      name: input,
+      status: currentStatus,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
-    setInput(''); // clean input field
+  //   const requestOptions = {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({ nameTask: 'Fetch POST Request Example',  statusTask: currentStatus})
+  // };
+  // const test = await fetch('http://localhost:3001/tasks', requestOptions)
+  // console.log("🚀 ~ file: TodoForm.js ~ line 50 ~ handleSubmit ~ test", test)
+  //     .then(response => response.json())
+  //     .then(data => console.log(data) );
+
+    // setInput(''); // clean input field
   };
 
   return (
