@@ -10,17 +10,12 @@ const createTask = async ({ taskName, statusTask }) => {
   const query = 'INSERT INTO Ebytr.Tasks (taskName, statusTask) VALUES (?, ?);';
 
   const [{ insertId }] = await connection.execute(query, [taskName, statusTask]);
-  // const data = await connection.execute(query, [taskName, statusTask]);
-  // console.log("🚀 ~ file: tasks.model.js ~ line 14 ~ createTask ~ data", data)
-
 
   return { id: insertId, taskName, statusTask };
-  // return data;
 };
 
 const updateTask = async ({ id, taskName, statusTask }) => {
   const query = 'UPDATE Ebytr.Tasks SET taskName = ?, statusTask = ? WHERE id = ?;';
-  // UPDATE Ebytr.Tasks SET taskName = 'testUpdate', statusTask = 'pendente' WHERE id = 8;
 
   await connection.execute(query, [taskName, statusTask, id]);
 
