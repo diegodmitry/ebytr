@@ -36,7 +36,7 @@ Tudo isso, applicado em uma esstrutura de task list.
 - [x] A tarefa de possuir um status: pendente, andamento ou pronto(backend);
 
 
-<h3 align="left">Contato:</h3>
+<h3 align="left">Vamos tomar um café!? :</h3>
 <p align="left">
 <a href="https://www.linkedin.com/in/diegodmitry/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="https://www.linkedin.com/in/diegodmitry/" height="30" width="40" /></a>
 </p>
